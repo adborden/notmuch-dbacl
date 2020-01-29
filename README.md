@@ -26,3 +26,18 @@ These options are passed to `dbacl`.
 #### classify
 
 Reads a message from stdin and classifies the message.
+
+
+#### tag
+
+Should be called as part of `notmuch new` script. Tags new messages based on
+classification.
+
+
+## How it works
+
+Each category is binary, a message is either part of the category or not. When
+learning a category, we create two dbacl categories, "category" and
+"not_category". Then when classifying messages, dbacl classifies against these
+two categories. This is based on the dbacl [spam
+tutorial](http://dbacl.sourceforge.net/spamtut-1.html) which does the same.
